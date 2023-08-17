@@ -12,7 +12,7 @@ class MainWindow(Gtk.ApplicationWindow):
         
         self.cssProvider = Gtk.CssProvider()
         
-        self.file = Gio.File.new_for_path('base_exemple.css')
+        self.file = Gio.File.new_for_path('support.css')
         
         self.cssProvider.load_from_file(self.file)
 
