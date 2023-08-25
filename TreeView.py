@@ -12,17 +12,17 @@ class DataObject(GObject.GObject):
 
 
 def add_tree_node(item):
-    
+
     if not (item):
-            print("no item")
-            return model
-    else:        
+        print("no item")
+        return model
+    else:
         if type(item) == Gtk.TreeListRow:
             item = item.get_item()
 
             print("converteu")
-            print(item)  
-            
+            print(item)
+
         if not item.children:
             return None
         store = Gio.ListStore.new(DataObject)
@@ -57,27 +57,27 @@ def on_activate(app):
         default_width=400,
     )
     sw = Gtk.ScrolledWindow()
-    list_view = Gtk.ListView()  
+    list_view = Gtk.ListView()
     factory = Gtk.SignalListItemFactory()
     factory.connect("setup", setup)
     factory.connect("bind", bind)
     list_view.set_factory(factory)
-    
+
     selection = Gtk.SingleSelection()
-    
+
     store = Gio.ListStore.new(DataObject)
-    
+
     model = Gtk.TreeListModel.new(store, False, False, add_tree_node)
-    
+
     selection.set_model(model)
-    
+
     list_view.set_model(selection)
-    
+
     v1 = [DataObject("entrada 01")]
     v2 = [DataObject("entrada 01", v1)]
     store.append(DataObject("entrada 01", v2))
-       
-    #store.append(DataObject("entrada 02"))
+
+    # store.append(DataObject("entrada 02"))
 
     sw.set_child(list_view)
     win.set_child(sw)
