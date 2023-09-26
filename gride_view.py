@@ -10,27 +10,6 @@ class DataObject(GObject.GObject):
         super(DataObject, self).__init__()
         self.data = txt
 
-
-def add_tree_node(item):
-
-    if not (item):
-        print("no item")
-        return model
-    else:
-        if type(item) == Gtk.TreeListRow:
-            item = item.get_item()
-
-            print("converteu")
-            print(item)
-
-        if not item.children:
-            return None
-        store = Gio.ListStore.new(DataObject)
-        for child in item.children:
-            store.append(child)
-        return store
-
-
 def setup(widget, item):
     """Setup the widget to show in the Gtk.Listview"""
     label = Gtk.Label()

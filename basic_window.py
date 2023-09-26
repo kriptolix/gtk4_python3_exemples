@@ -1,7 +1,7 @@
+from gi.repository import Gtk
 import gi
 
 gi.require_version("Gtk", "4.0")
-from gi.repository import Gtk
 
 
 def on_activate(app):
@@ -9,7 +9,7 @@ def on_activate(app):
         application=app,
         title="Gtk4 is Awesome !!!",
         default_height=400,
-        default_width=400,
+        default_width=600,
     )
     sw = Gtk.ScrolledWindow()
 
