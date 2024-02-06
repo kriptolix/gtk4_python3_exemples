@@ -1,25 +1,23 @@
+from gi.repository import Gtk, Gio, GObject
 import gi
 
 gi.require_version("Gtk", "4.0")
-from gi.repository import Gtk, Gio, GObject
 
 
 class DataObject(GObject.GObject):
-    def __init__(self, txt: str):
+    def __init__(self):
         super(DataObject, self).__init__()
-        self.data = txt
+
 
 def setup(widget, item):
     """Setup the widget to show in the Gtk.Listview"""
-    label = Gtk.Label()
-    item.set_child(label)
+    image = Gtk.Image()
+    item.set_child(image)
 
 
 def bind(widget, item):
     """bind data from the store object to the widget"""
-    label = item.get_child()
-    obj = item.get_item()
-    label.set_label(obj.data)
+    item.get_child().set_from_file("../exemple.jpg")
 
 
 def on_activate(app):
@@ -45,8 +43,8 @@ def on_activate(app):
 
     grid_view.set_model(selection)
 
-    v1 = DataObject("entrada 01")
-    v2 = DataObject("entrada 02")
+    v1 = DataObject()
+    v2 = DataObject()
     store.append(v1)
     store.append(v2)
 
